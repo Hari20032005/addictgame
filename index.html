@@ -16,6 +16,8 @@
                 <div class="nav-links">
                     <a href="#" class="nav-link active" data-page="dashboard">Dashboard</a>
                     <a href="#" class="nav-link" data-page="log">Log Day</a>
+                    <a href="#" class="nav-link" data-page="challenges">Challenges</a>
+                    <a href="#" class="nav-link" data-page="history">History</a>
                     <a href="#" class="nav-link" data-page="progress">Progress</a>
                     <a href="#" class="nav-link" data-page="map">World</a>
                     <a href="#" class="nav-link" data-page="settings">Settings</a>
@@ -49,6 +51,18 @@
                         <div class="stat-card">
                             <h3>Productivity Score</h3>
                             <div class="stat-value" id="productivity-score">0%</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Login Streak</h3>
+                            <div class="stat-value" id="login-streak">0</div>
+                            <p>days</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Daily Rewards</h3>
+                            <div class="stat-value" id="daily-rewards-count">0</div>
+                            <p>days</p>
                         </div>
                     </div>
                     
@@ -199,6 +213,40 @@
                 </div>
             </section>
             
+            <!-- Challenges Page -->
+            <section id="challenges-page" class="page">
+                <div class="challenges-container">
+                    <h2>Daily Challenges</h2>
+                    <p>Complete these daily challenges to earn extra XP and stay motivated.</p>
+                    
+                    <div class="challenges-list" id="challenges-list">
+                        <p>Loading challenges...</p>
+                    </div>
+                    
+                    <div class="challenge-info">
+                        <h3>About Challenges</h3>
+                        <p>Complete daily challenges to earn bonus XP and maintain your momentum. Each challenge completed helps build discipline and healthy habits.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- History Page -->
+            <section id="history-page" class="page">
+                <div class="history-container">
+                    <h2>Habit History</h2>
+                    <p>Track your progress over time and see your improvement journey.</p>
+                    
+                    <div class="history-list" id="history-list">
+                        <p>Loading history...</p>
+                    </div>
+                    
+                    <div class="history-info">
+                        <h3>About Your Progress</h3>
+                        <p>Your habit history is saved to track your long-term progress. Consistent logging helps you understand patterns and maintain motivation.</p>
+                    </div>
+                </div>
+            </section>
+            
             <!-- Settings Page -->
             <section id="settings-page" class="page">
                 <div class="settings-container">
@@ -206,6 +254,13 @@
                     
                     <div class="setting-group">
                         <h3>Notification Preferences</h3>
+                        <div class="setting-item">
+                            <label for="notification-enabled">
+                                <input type="checkbox" id="notification-enabled">
+                                Enable daily reminders
+                            </label>
+                        </div>
+                        
                         <div class="setting-item">
                             <label for="daily-reminder">Daily reminder time:</label>
                             <input type="time" id="daily-reminder" value="20:00">

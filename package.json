@@ -1,7 +1,7 @@
 {
   "name": "victory-road-game",
-  "version": "1.0.0",
-  "description": "A web-based game to help overcome addiction habits",
+  "version": "2.0.0",
+  "description": "A web-based game to help overcome addiction habits with enhanced features",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -18,7 +18,9 @@
     "recovery",
     "habit",
     "game",
-    "productivity"
+    "productivity",
+    "discipline",
+    "self-improvement"
   ],
   "author": "Victory Road",
   "license": "MIT"

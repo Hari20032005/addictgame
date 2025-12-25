@@ -75,11 +75,15 @@ class UIManager {
         document.getElementById('total-xp').textContent = this.game.state.totalXP;
         document.getElementById('productivity-score').textContent = this.game.calculateProductivityScore() + '%';
         
+        // Update new stats
+        document.getElementById('login-streak').textContent = this.game.state.loginStreak || 0;
+        document.getElementById('daily-rewards-count').textContent = this.game.state.dailyRewards.consecutiveDays;
+        
         // Update XP bar
         const xpToNextLevel = (this.game.state.characterLevel * 500) - this.game.state.totalXP;
         const xpPercent = Math.min(100, Math.max(0, (this.game.state.totalXP % 500) / 5));
         document.getElementById('xp-fill').style.width = `${xpPercent}%`;
-        document.getElementById('xp-text').textContent = `${this.state.totalXP % 500} / 500 XP to next level`;
+        document.getElementById('xp-text').textContent = `${this.game.state.totalXP % 500} / 500 XP to next level`;
         
         // Update streak displays
         document.getElementById('no-porn-streak').textContent = this.game.state.noPornStreak;
@@ -279,6 +283,20 @@ class UIManager {
         document.getElementById('productivity-streak').textContent = this.game.state.productivityStreak;
     }
 
+    setupChallengesPage() {
+        // Render challenges if the container exists
+        if (document.getElementById('challenges-list')) {
+            this.game.renderChallenges();
+        }
+    }
+
+    setupHistoryPage() {
+        // Render history if the container exists
+        if (document.getElementById('history-list')) {
+            this.game.renderHistory();
+        }
+    }
+
     setupSettingsPage() {
         // Set up settings events
         const screenTimeLimitEl = document.getElementById('screen-time-limit');
@@ -320,9 +338,19 @@ class UIManager {
         
         const dailyReminderEl = document.getElementById('daily-reminder');
         if (dailyReminderEl) {
+            dailyReminderEl.value = this.game.state.settings.notifications.time;
             dailyReminderEl.addEventListener('change', (e) => {
-                // In a real app, this would set up notifications
-                console.log('Daily reminder time set to:', e.target.value);
+                this.game.state.settings.notifications.time = e.target.value;
+                this.game.saveState();
+            });
+        }
+        
+        const notificationEnabledEl = document.getElementById('notification-enabled');
+        if (notificationEnabledEl) {
+            notificationEnabledEl.checked = this.game.state.settings.notifications.enabled;
+            notificationEnabledEl.addEventListener('change', (e) => {
+                this.game.state.settings.notifications.enabled = e.target.checked;
+                this.game.saveState();
             });
         }
     }
@@ -399,6 +427,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         break;
                     case 'log':
                         window.uiManager.setupLogPage();
+                        break;
+                    case 'challenges':
+                        window.uiManager.setupChallengesPage();
+                        break;
+                    case 'history':
+                        window.uiManager.setupHistoryPage();
                         break;
                     case 'progress':
                         window.uiManager.setupProgressPage();
