@@ -1,0 +1,25 @@
+{
+  "name": "victory-road-game",
+  "version": "1.0.0",
+  "description": "A web-based game to help overcome addiction habits",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "addiction",
+    "recovery",
+    "habit",
+    "game",
+    "productivity"
+  ],
+  "author": "Victory Road",
+  "license": "MIT"
+}

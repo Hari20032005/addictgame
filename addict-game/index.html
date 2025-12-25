@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Road - Overcome Addiction Habits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1>Victory Road</h1>
+                <div class="nav-links">
+                    <a href="#" class="nav-link active" data-page="dashboard">Dashboard</a>
+                    <a href="#" class="nav-link" data-page="log">Log Day</a>
+                    <a href="#" class="nav-link" data-page="progress">Progress</a>
+                    <a href="#" class="nav-link" data-page="map">World</a>
+                    <a href="#" class="nav-link" data-page="settings">Settings</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Page -->
+            <section id="dashboard-page" class="page active">
+                <div class="dashboard-container">
+                    <div class="dashboard-header">
+                        <h2>Your Journey</h2>
+                        <p>Welcome back! Continue your path to recovery.</p>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <h3>Current Streak</h3>
+                            <div class="stat-value" id="streak-count">0</div>
+                            <p>days</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Total XP</h3>
+                            <div class="stat-value" id="total-xp">0</div>
+                            <p>points</p>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h3>Productivity Score</h3>
+                            <div class="stat-value" id="productivity-score">0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-container">
+                        <h3>Your Character</h3>
+                        <div class="character-display" id="character-display">
+                            <div class="character" id="character"></div>
+                        </div>
+                        <p class="character-status" id="character-status">Your character is strong and ready for adventure!</p>
+                    </div>
+                    
+                    <div class="world-container">
+                        <h3>World State</h3>
+                        <div class="world-display" id="world-display">
+                            <div class="terrain" id="terrain"></div>
+                            <div class="weather" id="weather"></div>
+                        </div>
+                        <p class="world-status" id="world-status">The world is bright and welcoming.</p>
+                    </div>
+                    
+                    <div class="motivation-container">
+                        <h3>Daily Motivation</h3>
+                        <p id="motivation-message">Every day you choose discipline over gratification, you grow stronger!</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Log Page -->
+            <section id="log-page" class="page">
+                <div class="log-container">
+                    <h2>Daily Log</h2>
+                    <p>Log your behavior to earn rewards and advance in the game.</p>
+                    
+                    <form id="habit-log-form">
+                        <div class="form-group">
+                            <label for="no-porn">Did you watch porn today?</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="no-porn" value="yes" id="no-porn-yes">
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="no-porn" value="no" id="no-porn-no" checked>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="screen-time">How many minutes did you spend on YouTube or short-form content?</label>
+                            <input type="range" id="screen-time" min="0" max="300" value="0">
+                            <span id="screen-time-value">0 minutes</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productive-task">What productive task did you complete today? (optional)</label>
+                            <textarea id="productive-task" placeholder="Write about something you accomplished today..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Log Progress</button>
+                    </form>
+                    
+                    <div class="rewards-preview">
+                        <h3>Today's Potential Rewards</h3>
+                        <ul id="rewards-list">
+                            <li>No porn: <span id="porn-reward">+50 XP</span></li>
+                            <li>Screen time &lt;= 120 min: <span id="screen-reward">+30 XP</span></li>
+                            <li>Productive task: <span id="productivity-reward">+40 XP</span></li>
+                            <li>Completing all: <span id="bonus-reward">+50 XP bonus</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Progress Page -->
+            <section id="progress-page" class="page">
+                <div class="progress-container">
+                    <h2>Your Progress</h2>
+                    
+                    <div class="xp-container">
+                        <h3>Experience Points</h3>
+                        <div class="xp-bar-container">
+                            <div class="xp-bar" id="xp-bar">
+                                <div class="xp-fill" id="xp-fill"></div>
+                            </div>
+                            <div class="xp-text" id="xp-text">0 / 500 XP to next level</div>
+                        </div>
+                    </div>
+                    
+                    <div class="streak-container">
+                        <h3>Streaks</h3>
+                        <div class="streak-display">
+                            <div class="streak-item">
+                                <span class="streak-label">No Porn Streak:</span>
+                                <span class="streak-value" id="no-porn-streak">0</span>
+                            </div>
+                            <div class="streak-item">
+                                <span class="streak-label">Low Screen Time Streak:</span>
+                                <span class="streak-value" id="low-screen-streak">0</span>
+                            </div>
+                            <div class="streak-item">
+                                <span class="streak-label">Daily Productivity Streak:</span>
+                                <span class="streak-value" id="productivity-streak">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="historical-data">
+                        <h3>Historical Data</h3>
+                        <div class="chart-placeholder">Your progress chart will appear here</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- World Map Page -->
+            <section id="map-page" class="page">
+                <div class="map-container">
+                    <h2>Game World</h2>
+                    <p>Explore the world that changes based on your habits</p>
+                    
+                    <div class="world-map" id="world-map">
+                        <div class="map-area">
+                            <div class="terrain-type" id="current-terrain">
+                                <div class="terrain-image" id="terrain-image"></div>
+                                <div class="terrain-name">Starting Village</div>
+                            </div>
+                            
+                            <div class="location" data-location="forest">
+                                <div class="location-icon">🌲</div>
+                                <div class="location-name">Forest of Focus</div>
+                            </div>
+                            
+                            <div class="location" data-location="mountain">
+                                <div class="location-icon">⛰️</div>
+                                <div class="location-name">Mountain of Discipline</div>
+                            </div>
+                            
+                            <div class="location" data-location="ocean">
+                                <div class="location-icon">🌊</div>
+                                <div class="location-name">Ocean of Calm</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="world-narrative">
+                        <p id="narrative-text">You are at the Starting Village. Your discipline has created a safe haven here.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Settings Page -->
+            <section id="settings-page" class="page">
+                <div class="settings-container">
+                    <h2>Game Settings</h2>
+                    
+                    <div class="setting-group">
+                        <h3>Notification Preferences</h3>
+                        <div class="setting-item">
+                            <label for="daily-reminder">Daily reminder time:</label>
+                            <input type="time" id="daily-reminder" value="20:00">
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label for="motivation-frequency">Motivation frequency:</label>
+                            <select id="motivation-frequency">
+                                <option value="high">High</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>Game Settings</h3>
+                        <div class="setting-item">
+                            <label for="screen-time-limit">Screen time daily limit (minutes):</label>
+                            <input type="number" id="screen-time-limit" min="0" max="480" value="120">
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label for="theme">Game theme:</label>
+                            <select id="theme">
+                                <option value="light">Light</option>
+                                <option value="dark" selected>Dark</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>Data Management</h3>
+                        <button id="reset-data" class="btn-danger">Reset All Data</button>
+                        <button id="export-data" class="btn-secondary">Export Data</button>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>Help & Resources</h3>
+                        <p><a href="#" id="addiction-resources">Addiction Recovery Resources</a></p>
+                        <p><a href="#" id="support-forum">Community Support Forum</a></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
